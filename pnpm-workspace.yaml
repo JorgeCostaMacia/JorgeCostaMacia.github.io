@@ -1,0 +1,10 @@
+# Supply-chain hardening (applies to whoever installs the project, CI included)
+
+# Never install versions published less than 3 days ago (window to catch compromised packages)
+minimumReleaseAge: 4320
+# No transitive dependencies from git/tarballs (registry only)
+blockExoticSubdeps: true
+# Dependency install scripts never run unless reviewed here; strictDepBuilds, on by default, fails the install on any
+# unreviewed script. esbuild: its script only checks the binary the platform package already provides.
+allowBuilds:
+  esbuild: false

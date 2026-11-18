@@ -1,0 +1,67 @@
+---
+import { person, profiles } from '../data/site';
+---
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">{person.role}</p>
+    <h1>{person.name}</h1>
+    <p class="tagline">{person.tagline}</p>
+    <nav class="profiles" aria-label="Profiles">
+      {profiles.map((p) => (
+        <a href={p.href}>{p.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .hero {
+    background: linear-gradient(160deg, var(--hero-from), var(--hero-to));
+    color: var(--hero-text);
+    padding: 72px 0 56px;
+    border-bottom: 3px solid var(--accent);
+  }
+
+  .eyebrow {
+    margin: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 8px 0 12px;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    line-height: 1.15;
+  }
+
+  .tagline {
+    margin: 0;
+    max-width: 40rem;
+    color: var(--hero-muted);
+    font-size: 1.15rem;
+  }
+
+  .profiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .profiles a {
+    color: var(--hero-text);
+    border: 1px solid rgb(224 162 43 / 0.55);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+  }
+
+  .profiles a:hover {
+    background: rgb(224 162 43 / 0.15);
+    text-decoration: none;
+  }
+</style>

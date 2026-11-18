@@ -1,0 +1,61 @@
+/* The reset and the base styles, inside :where() so they add no specificity and any component overrides them. */
+:where(*, *::before, *::after) {
+  box-sizing: border-box;
+}
+
+:where(body) {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    'Segoe UI',
+    system-ui,
+    -apple-system,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+  line-height: 1.6;
+}
+
+:where(img) {
+  max-width: 100%;
+  height: auto;
+}
+
+:where(a) {
+  color: var(--accent-text);
+  text-decoration: none;
+}
+
+:where(a:hover) {
+  text-decoration: underline;
+}
+
+:where(a, button):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+:where(.wrap) {
+  max-width: var(--width);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Hidden until a keyboard user reaches it: the first stop of the page jumps past the header. */
+:where(.skip-link) {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 1;
+  padding: 8px 14px;
+  background: var(--surface);
+  color: var(--text);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+}
+
+:where(.skip-link:focus) {
+  top: 12px;
+}

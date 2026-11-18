@@ -1,0 +1,29 @@
+---
+import Hero from '../components/Hero.astro';
+import ProjectList from '../components/ProjectList.astro';
+import Section from '../components/Section.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import StackList from '../components/StackList.astro';
+import { libraries, person, stack, tools } from '../data/site';
+import Base from '../layouts/Base.astro';
+---
+
+<Base title={person.name} description={person.tagline}>
+  <Hero />
+  <main id="main" class="wrap">
+    <Section id="stack" title="What I work with">
+      <StackList items={stack} />
+    </Section>
+    <Section
+      id="libraries"
+      title="Open-source .NET libraries"
+      lead="Small, independent packages on NuGet, used in production."
+    >
+      <ProjectList projects={libraries} />
+    </Section>
+    <Section id="tools" title="Tooling">
+      <ProjectList projects={tools} />
+    </Section>
+  </main>
+  <SiteFooter />
+</Base>

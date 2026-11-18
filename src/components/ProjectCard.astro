@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../data/site';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+
+// A raster icon is generated at 1x and 2x of its 48px box; an SVG scales by itself and is served as it is.
+const densities = project.icon.format === 'svg' ? undefined : [1, 2];
+---
+
+<article class="card">
+  <Image src={project.icon} alt="" width={48} height={48} densities={densities} />
+  <div>
+    <h3>{project.name}</h3>
+    <p>{project.description}</p>
+    <p class="links">
+      <a href={project.repo}>GitHub</a>
+      {project.link && <a href={project.link.href}>{project.link.label}</a>}
+    </p>
+  </div>
+</article>
+
+<style>
+  .card {
+    flex: 1;
+    display: flex;
+    gap: 14px;
+    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  img {
+    flex: none;
+    align-self: flex-start;
+    width: 48px;
+    border-radius: var(--radius);
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  p {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .links {
+    display: flex;
+    gap: 14px;
+    margin-top: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+</style>

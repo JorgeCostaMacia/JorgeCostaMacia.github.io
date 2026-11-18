@@ -1,0 +1,3 @@
+# Prettier writes LF, so every checkout keeps LF
+* text=auto eol=lf
+*.png binary

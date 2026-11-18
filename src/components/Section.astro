@@ -1,0 +1,41 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  lead?: string;
+}
+
+const { id, title, lead } = Astro.props;
+---
+
+<section aria-labelledby={id}>
+  <h2 id={id}>{title}</h2>
+  {lead && <p class="lead">{lead}</p>}
+  <slot />
+</section>
+
+<style>
+  section {
+    padding-top: 48px;
+  }
+
+  h2 {
+    margin: 0 0 16px;
+    font-size: 1.3rem;
+  }
+
+  h2::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    margin-top: 8px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .lead {
+    margin: -4px 0 16px;
+    color: var(--muted);
+  }
+</style>

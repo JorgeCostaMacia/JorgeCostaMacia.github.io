@@ -1,0 +1,29 @@
+/* The site's values, the family's palette: navy, gold, dark and light. A new colour is a new token here. */
+:root {
+  --bg: #f3f7fc;
+  --surface: #ffffff;
+  --text: #1a2433;
+  --muted: #5b6a82;
+  --line: #dee8f4;
+  --accent: #e0a22b;
+  --accent-text: #9a6a0e;
+  --hero-from: #2a3850;
+  --hero-to: #1a2433;
+  --hero-text: #f3f7fc;
+  --hero-muted: #9aa7bc;
+  --radius: 12px;
+  --width: 960px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0f17;
+    --surface: #131b27;
+    --text: #e6ecf5;
+    --muted: #909eb5;
+    --line: #243146;
+    --accent-text: #e0a22b;
+    color-scheme: dark;
+  }
+}
