@@ -56,11 +56,16 @@ The same PNG is the repository's social preview on GitHub (Settings > General > 
 
 ## CI / publishing
 
-One workflow, `.github/workflows/deploy.yml`. On `develop`, on a pull request and on `main` it runs install (frozen lockfile), `format:check`, `check` and `build`; on a push to `main` it also uploads `dist` and deploys it in the `github-pages` environment, so the repository's Deployments list every version linked to the site. Pages is set to build from GitHub Actions. There are no versions or releases: a push to `main` is a publish.
+Two workflows:
+
+- `deploy.yml` — on `develop`, on a pull request and on `main` it runs install (frozen lockfile), `format:check`, `check` and `build`; on a push to `main` it also uploads `dist` and deploys it in the `github-pages` environment, so the repository's Deployments list every version linked to the site. Pages is set to build from GitHub Actions. It can also be run by hand (`workflow_dispatch`).
+- `release.yml` — the GitHub Release of each pushed `vX.Y.Z` tag, through the shared `github-release` of [github-workflows](https://github.com/JorgeCostaMacia/github-workflows) (`@v1`). There is no CHANGELOG: nobody consumes the site, so the notes are GitHub's generated ones.
+
+The version is `version` in `package.json`, bumped on the release branch; a push to `main` publishes the site whatever it says.
 
 ## Branching — GitFlow
 
-Use the **`gitflow` skill** for any branch work. Work goes to `develop` through feature/bugfix branches (`--no-ff --no-edit`); `main` only receives finished work, and every push to it publishes the site.
+Use the **`gitflow` skill** for any branch work. Work goes to `develop` through feature/bugfix branches (`--no-ff --no-edit`); `main` only receives a release or a hotfix, which bumps `package.json`'s `version` and is tagged `vX.Y.Z`, and every push to it publishes the site.
 
 ## Git etiquette
 
