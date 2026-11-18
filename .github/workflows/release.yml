@@ -1,0 +1,15 @@
+# Release: the GitHub Release of each vX.Y.Z tag the GitFlow finish pushes (the shared github-release). The site has
+# no CHANGELOG, so the notes are GitHub's generated ones. Deploy already published the site from main.
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    uses: JorgeCostaMacia/github-workflows/.github/workflows/github-release.yml@v1
