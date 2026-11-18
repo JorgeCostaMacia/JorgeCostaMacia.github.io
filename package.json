@@ -1,7 +1,7 @@
 {
   "name": "jorgecostamacia.github.io",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "packageManager": "pnpm@12.20.0",
   "scripts": {
